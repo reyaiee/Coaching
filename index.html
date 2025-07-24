@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCC Services | Confidential Coaching Conversations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Calendly link widget begin -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <!-- Calendly link widget end -->
+    <style>
+        :root {
+            --magnolia-pink:#F6DCD9; 
+            --text-black: #2F2524;    
+            --highlight: #FBF1F0;      
+            --overlay: rgba(255,255,255,0.92); 
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-black);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            font-weight: 400;
+            background-color: var(--magnolia-pink);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin: 0;
+            padding: 40px 0;
+            height: 100vh;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 1400px; 
+            width: auto;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        
+        .logo:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+        }
+        
+        .booking-section {
+            text-align: center;
+            margin: 20px 0 40px;
+            padding: 30px;
+            background-color: var(--highlight);
+            border-radius: 8px;
+        }
+        
+        .calendly-inline-widget {
+            min-width: 320px;
+            height: 700px;
+            margin-top: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        header {
+            text-align: center;
+            margin: 0 0 40px; /* Reduced margin to bring content closer */
+            padding: 0 20px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .headline-section {
+            margin-bottom: 30px;
+        }
+        
+        .main-headline {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            font-size: 2.2rem;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            color: var(--text-black);
+            letter-spacing: -0.5px;
+        }
+        
+        .sub-headline {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 1.4rem;
+            color: var(--text-black);
+            margin-bottom: 20px;
+        }
+        
+        .intro-paragraph {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.6rem;
+            color: var(--text-black);
+            margin: 30px 0;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            font-size: 2.1rem;
+            margin: 50px 0 30px; /* Adjusted margin */
+            color: var(--text-black);
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            font-size: 1.4rem;
+            margin: 40px 0 20px;
+            color: var(--text-black);
+        }
+        
+        section {
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-black);
+            letter-spacing: 0.1px;
+        }
+        
+        .how-it-works {
+            background-color: #FBF1F0;
+            padding: 50px;
+            border-radius: 8px;
+            border: 1px solid var(--highlight);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .how-it-works:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+        
+        .steps {
+            margin: 40px 0;
+        }
+        
+        .step {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 50px;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .step:hover {
+            transform: translateX(8px);
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background-color: var(--text-black);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover .step-number {
+            transform: scale(1.1);
+            background-color: #333;
+        }
+        
+        .btn {
+            background-color: var(--text-black);
+            color: white;
+            border: none;
+            padding: 16px 36px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(0,0,0,0.15);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                      transparent, 
+                      rgba(255,255,255,0.2), 
+                      transparent);
+            transition: 0.6s;
+        }
+        
+        .btn:hover::after {
+            left: 100%;
+        }
+        
+        .feature-image-container {
+            margin: 60px 0 40px; /* Adjusted margin to move image up */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transition: all 0.5s ease;
+        }
+        
+        .feature-image-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .feature-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+        
+        .feature-image-container:hover .feature-image {
+            transform: scale(1.03);
+        }
+        
+        .download-form {
+            display: none;
+            margin-top: 40px;
+            background: var(--overlay);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--highlight);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        input {
+            padding: 14px 18px;
+            margin: 8px 0;
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            border: 1px solid var(--highlight);
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: white;
+            font-size: 1rem;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--text-black);
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+        }
+        
+        input:hover {
+            border-color: #ccc;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            font-size: 0.9rem;
+            color: var(--text-black);
+            border-top: 1px solid var(--highlight);
+            margin-top: 80px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 20px auto;
+            border: 4px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            border-top-color: var(--text-black);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Success checkmark */
+        .checkmark {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 20px auto;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        /* Confetti effect */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--text-black);
+            opacity: 0;
+            animation: confetti 3s ease-out;
+            z-index: 1000;
+        }
+        
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* About Me Button */
+        .about-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 100;
+            background-color: transparent;
+            color: var(--text-black);
+            border: none;
+            padding: 12px 0;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-weight: 500;
+            box-shadow: none;
+            text-decoration: underline;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .about-btn:hover {
+            color: #333;
+            transform: none;
+            text-decoration-thickness: 2px;
+        }
+        
+        /* About Me Bubble */
+        .about-bubble {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 80%;
+            max-width: 700px;
+            max-height: 80vh;
+            background-color: var(--highlight);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            z-index: 99;
+            opacity: 0;
+            overflow-y: auto;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .about-bubble.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        
+        .about-bubble h2 {
+            margin-top: 0;
+            color: var(--text-black);
+        }
+        
+        .about-bubble p {
+            margin-bottom: 20px;
+        }
+        
+        .bubble-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--text-black);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .bubble-close:hover {
+            transform: rotate(90deg) scale(1.1);
+            background-color: #333;
+        }
+        
+        .bubble-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 98;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .bubble-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        /* Bubble particles */
+        .bubble-particle {
+            position: absolute;
+            background-color: var(--magnolia-pink);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 101;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(180deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .logo {
+                height: 300px; /* Adjusted for mobile */
+            }
+            
+            .logo-container {
+                min-height: 300px;
+                height: 30vh;
+                padding: 30px 0;
+            }
+            
+            .main-headline {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+            
+            .sub-headline {
+                font-size: 1.2rem;
+            }
+            
+            .intro-paragraph {
+                font-size: 1.3rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            header {
+                margin: 0 0 40px;
+            }
+            
+            .how-it-works, .booking-section {
+                padding: 30px;
+            }
+            
+            .step {
+                padding-left: 45px;
+            }
+            
+            .calendly-inline-widget {
+                height: 600px;
+            }
+            
+            .about-btn {
+                top: 15px;
+                right: 15px;
+                padding: 10px 0;
+                font-size: 0.9rem;
+            }
+            
+            .about-bubble {
+                width: 90%;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- About Me Button -->
+    <button class="about-btn" id="aboutBtn">About CCC</button>
+    
+    <!-- About Me Bubble -->
+    <div class="about-bubble" id="aboutBubble">
+        <button class="bubble-close" id="bubbleClose">&times;</button>
+        <h2>About Me</h2>
+        <p>I'm Tia, founder of CCC Services. I hold a Bachelor's Degree in Human Resource Management and am CIPD Level 5 qualified, with professional experience at the CIPD — the global HR and L&D body, now with a growing presence in the UAE.</p>
+        
+        <p>Whilst this experience shaped my understanding of workplace wellbeing and internal structures, CCC is not an HR service. It was designed as a distinct offering: confidential, discreet support that exists outside of internal company systems.</p>
+        
+        <p>After moving away from corporate life due to my own experience with burnout, I began exploring more intuitive approaches to emotional support and launched an anonymous virtual wellness page. Originally created to share guidance and tools for navigating life pressures, I noticed a recurring theme: many people weren't seeking advice, but rather a space to be heard without judgment.</p>
+        
+        <p>This led me to begin my coaching training, which I pursued in parallel — completing a Coaching for Business qualification with City University London. I'm now working towards the ICF Associate Certified Coach (ACC) credential via the Portfolio Pathway, with over 40 hours of ICF-accredited training completed to date.</p>
+        
+        <p>CCC bridges the gap between internal workplace structures and traditional therapeutic routes by offering consistent, private conversations with the same trusted coach each time. This isn't therapy or HR. It's a protected space to release pressure, gain clarity, and feel supported — a modern wellbeing check-in, a call in confidence that slots gently into the working day, without the pressure to perform or present.</p>
+        
+        <p>UAE-based.</p>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="bubble-overlay" id="bubbleOverlay"></div>
+    
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo.png" alt="CCC Services Logo" class="logo">
+            
+            <div class="headline-section">
+                <div class="main-headline">For the pressures you can't always see but feel.</div>
+                <div class="sub-headline">Quietly changing the way we support our people 👂 one conversation at a time.</div>
+                <div class="intro-paragraph">The calm in the chaos. A space to breathe, reflect, and reset.</div>
+            </div>
+        </div>
+
+        <section class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <strong>Book a 20-minute discovery call</strong>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <strong>Receive a bespoke information pack</strong>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <strong>Begin support if you feel we're aligned</strong>
+                </div>
+            </div>
+        </section>
+        
+        <div class="feature-image-container">
+            <img src="final.jfif" 
+                 alt="Serene workspace representing confidential coaching environment" 
+                 class="feature-image">
+        </div>
+        
+        <div class="booking-section">
+            <h3>Ready to Begin Your Confidential Journey?</h3>
+            <p>Book your alignment call directly through our calendar</p>
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget" 
+                 data-url="https://calendly.com/cccoachingservices/alignment-call" 
+                 style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript">
+                Calendly.initInlineWidget({
+                    url: 'https://calendly.com/cccoachingservices/alignment-call',
+                    parentElement: document.querySelector('.calendly-inline-widget'),
+                    prefill: {},
+                    utm: {}
+                });
+            </script>
+            <!-- Calendly inline widget end -->
+        </div>
+        
+        <div id="info-pack-form">
+            <h3>Request Your Information Package</h3>
+            <p>Enter your details below to receive our confidential information pack directly to your inbox.</p>
+            
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Your Email Address" required>
+            </div>
+            <button onclick="submitForm()" class="btn" id="submit-btn">Send Me the Package</button>
+            <div class="spinner" id="spinner"></div>
+            <svg class="checkmark" id="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle cx="26" cy="26" r="25" fill="none" stroke="#000" stroke-width="2"/>
+                <path fill="none" stroke="#000" stroke-width="4" stroke-linecap="round" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        </div>
+        
+        <div id="download-section" class="download-form">
+            <h3>Your Information Package Is Ready</h3>
+            <p>Thank you for your interest in CCC Services. We've prepared a personalized information pack to help you understand our approach to confidential support.</p>
+            <a href="#" download="CCC_Services_Info_Pack.pdf" class="btn" id="download-btn">
+                Download Your Package Now
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        CCC Services FZE – All Rights Reserved<br>
+        Ajman Free Zone, Ajman, United Arab Emirates
+    </footer>
+    
+    <script>
+        // Form submission with animations
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const submitBtn = document.getElementById('submit-btn');
+            const spinner = document.getElementById('spinner');
+            const checkmark = document.getElementById('checkmark');
+            
+            if (name && email) {
+                // Show loading spinner
+                submitBtn.style.display = 'none';
+                spinner.style.display = 'block';
+                
+                // Simulate API call
+                setTimeout(function() {
+                    // Hide spinner, show checkmark
+                    spinner.style.display = 'none';
+                    checkmark.style.display = 'block';
+                    
+                    // After checkmark animation, show download section
+                    setTimeout(function() {
+                        document.getElementById('info-pack-form').style.display = 'none';
+                        document.getElementById('download-section').style.display = 'block';
+                        createConfetti();
+                        
+                        // Animate download button
+                        const downloadBtn = document.getElementById('download-btn');
+                        let scale = 1;
+                        const pulse = setInterval(() => {
+                            scale = scale === 1 ? 1.02 : 1;
+                            downloadBtn.style.transform = `scale(${scale})`;
+                        }, 800);
+                        
+                        // Download button click effect
+                        downloadBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            clearInterval(pulse);
+                            this.innerHTML = '✓ Download Started...';
+                            this.style.backgroundColor = '#4CAF50';
+                            setTimeout(() => {
+                                // In a real implementation, this would trigger the download
+                                // window.location.href = '[PDF_LINK]';
+                                alert('Download would start in a real implementation');
+                            }, 800);
+                        });
+                    }, 1000);
+                }, 1500);
+            } else {
+                // Shake form if validation fails
+                const form = document.getElementById('info-pack-form');
+                form.style.animation = 'none';
+                void form.offsetWidth; // Trigger reflow
+                form.style.animation = 'shake 0.5s';
+                
+                // Add shake animation
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    @keyframes shake {
+                        0%, 100% { transform: translateX(0); }
+                        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                        20%, 40%, 60%, 80% { transform: translateX(5px); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+        
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#000000', '#E8E0D8', '#D8CEC5', '#F8F4F0'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    for (let j = 0; j < 5; j++) {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti';
+                        confetti.style.left = Math.random() * 100 + 'vw';
+                        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        confetti.style.width = Math.random() * 8 + 4 + 'px';
+                        confetti.style.height = Math.random() * 8 + 4 + 'px';
+                        confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+                        document.body.appendChild(confetti);
+                        
+                        setTimeout(() => {
+                            confetti.remove();
+                        }, 3000);
+                    }
+                }, i * 100);
+            }
+        }
+        
+        // About Me Bubble functionality
+        const aboutBtn = document.getElementById('aboutBtn');
+        const aboutBubble = document.getElementById('aboutBubble');
+        const bubbleOverlay = document.getElementById('bubbleOverlay');
+        const bubbleClose = document.getElementById('bubbleClose');
+        
+        let isBubbleOpen = false;
+        
+        function toggleBubble() {
+            isBubbleOpen = !isBubbleOpen;
+            
+            if (isBubbleOpen) {
+                aboutBubble.classList.add('active');
+                bubbleOverlay.classList.add('active');
+                createBubbleParticles();
+            } else {
+                aboutBubble.classList.remove('active');
+                bubbleOverlay.classList.remove('active');
+            }
+        }
+        
+        function createBubbleParticles() {
+            // Create floating particles when bubble opens
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'bubble-particle';
+                    
+                    // Random size between 5px and 15px
+                    const size = Math.random() * 10 + 5;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Random position around the button
+                    const btnRect = aboutBtn.getBoundingClientRect();
+                    const btnCenterX = btnRect.left + btnRect.width / 2;
+                    const btnCenterY = btnRect.top + btnRect.height / 2;
+                    
+                    particle.style.left = `${btnCenterX}px`;
+                    particle.style.top = `${btnCenterY}px`;
+                    
+                    // Random animation duration
+                    const duration = Math.random() * 2 + 1;
+                    particle.style.animation = `float-up ${duration}s ease-out forwards`;
+                    
+                    document.body.appendChild(particle);
+                    
+                    // Remove particle after animation completes
+                    setTimeout(() => {
+                        particle.remove();
+                    }, duration * 1000);
+                }, i * 100);
+            }
+        }
+        
+        aboutBtn.addEventListener('click', toggleBubble);
+        bubbleClose.addEventListener('click', toggleBubble);
+        bubbleOverlay.addEventListener('click', toggleBubble);
+        
+        // Add keyboard escape functionality
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isBubbleOpen) {
+                toggleBubble();
+            }
+        });
+    </script>
+</body>
+</html>
